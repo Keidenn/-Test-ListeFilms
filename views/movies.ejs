@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des Films</title>
+    <style>
+        body {
+            background-color: #141414;
+            color: #fff;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #E50914;
+            margin-bottom: 2rem;
+        }
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: -10px;
+        }
+        li {
+            list-style: none;
+            background-color: #333;
+            padding: 15px;
+            margin: 10px;
+            width: calc(25% - 20px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        li:hover .movie-info {
+            opacity: 1;
+        }
+        li:hover .movie-img {
+            filter: brightness(50%);
+        }
+        .movie-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            width: 100%;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            border-radius: 0 0 4px 4px;
+        }
+        .movie-img {
+            width: 100%;
+            height: 600px;
+            border-radius: 4px;
+            transition: filter 0.3s ease;
+        }
+        h2, p {
+            margin: 4px 0;
+        }
+        @media (max-width: 1200px) {
+            li { width: calc(33.333% - 20px); }
+        }
+        @media (max-width: 768px) {
+            li { width: calc(50% - 20px); }
+        }
+        @media (max-width: 480px) {
+            li { width: calc(100% - 20px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Liste des Films</h1>
+    <ul>
+        <% movies.forEach(function(movie) { %>
+            <li>
+                <% if(movie.img){ %>
+                    <img class="movie-img" src="<%= movie.img %>" alt="<%= movie.title %>">
+                <% } %>
+                <div class="movie-info">
+                    <h2><%= movie.title %></h2>
+                    <p>Année: <%= movie.year %></p>
+                    <p>Réalisateur: <%= movie.director %></p>
+                    <p>Acteurs: <%= movie.actors.join(", ") %></p>
+                    <p>Genres: <%= movie.genres.join(", ") %></p>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

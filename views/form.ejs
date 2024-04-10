@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajouter un Film</title>
+</head>
+<body>
+    <h1>Ajouter un nouveau film</h1>
+    <form action="/addmovie" method="POST">
+        <label for="title">Titre:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="year">Année:</label>
+        <input type="text" id="year" name="year" required><br><br>
+
+        <label for="director">Réalisateur:</label>
+        <input type="text" id="director" name="director" required><br><br>
+
+        <label for="actors">Acteurs (séparés par une virgule):</label>
+        <input type="text" id="actors" name="actors" required><br><br>
+
+        <label for="genres">Genres (séparés par une virgule):</label>
+        <input type="text" id="genres" name="genres" required><br><br>
+
+        <button type="submit">Ajouter le Film</button>
+    </form>
+</body>
+</html>
